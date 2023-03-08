@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: echo 'testing'
       - run: echo docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
-      - run: docker build -t jnathlich/docker-react -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true jnathlich/docker-react npm test
+      - run: docker build -t jnathlich/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true jnathlich/react-test npm test
