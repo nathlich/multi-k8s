@@ -15,6 +15,7 @@ jobs:
       - run: docker run -e CI=true jnathlich/react-test npm test
 
   release:
+    runs-on: ubuntu-latest
     if: ${{ github.ref == 'master' }}
     needs: build
     steps:
