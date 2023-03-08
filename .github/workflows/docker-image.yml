@@ -13,3 +13,9 @@ jobs:
       - run: echo docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
       - run: docker build -t jnathlich/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true jnathlich/react-test npm test
+
+  release:
+    if: ${{ github.ref == 'master' }}
+    needs: build
+      steps:
+        -run docker build -t jnathlich/multi-client ./client
