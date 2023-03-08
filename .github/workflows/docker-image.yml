@@ -1,15 +1,16 @@
-name: Deploy Frontend
+name: Docker Image CI
 on:
   push:
     branches:
-      - main # check your repo, your default branch might be main!
- 
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
       - run: echo 'testing'
       - run: echo docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
-      - run: docker build -t jnathlich/docker-react -f Dockerfile.dev .
-      - run: docker run -e CI=true jnathlich/docker-react npm test
+      - run: docker build -t jnathlich/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true jnathlich/react-test npm test
