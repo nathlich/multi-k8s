@@ -17,6 +17,6 @@ jobs:
   release:
     if: ${{ github.ref == 'master' }}
     needs: build
-      steps:
-        - uses: actions/checkout@v3 
-        - run: docker build -t jnathlich/multi-client ./client
+    steps:
+      - uses: actions/checkout@v3 
+      - run: docker build -t jnathlich/multi-client ./client
