@@ -17,6 +17,4 @@ jobs:
   release:
     if: ${{ github.ref == 'master' }}
     needs: build
-      runs-on: ubuntu-latest
-      steps:
-        -run docker build -t jnathlich/multi-client ./client
+      -run docker build -t jnathlich/multi-client ./client
