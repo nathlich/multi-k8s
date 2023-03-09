@@ -22,6 +22,6 @@ jobs:
       - run: echo docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
       - run: docker build -t jnathlich/multi-client ./client
       - run: docker build -t jnathlich/multi-nginx ./nginx
-      - run: docker push jnathlich/multi-nginx
       - run: docker build -t jnathlich/multi-server ./server
       - run: docker build -t jnathlich/multi-worker ./worker
+      - run: docker push jnathlich/multi-nginx
