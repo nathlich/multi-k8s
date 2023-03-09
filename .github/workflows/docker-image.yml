@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v3 
       - run: echo docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
       - run: docker build -t jnathlich/multi-client ./client
-      - run: docker push jnathlich/multi-client
       - run: docker build -t jnathlich/multi-client ./nginx
+      - run: docker push jnathlich/multi-nginx
       - run: docker build -t jnathlich/multi-client ./server
       - run: docker build -t jnathlich/multi-client ./worker
