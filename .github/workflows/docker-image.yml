@@ -19,6 +19,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3 
+      - run: echo docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
       - run: docker build -t jnathlich/multi-client ./client
       - run: docker push jnathlich/multi-client
       - run: docker build -t jnathlich/multi-client ./nginx
