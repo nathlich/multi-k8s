@@ -32,11 +32,25 @@ jobs:
         with:
           context: ./client
           push: true
-          tags: jnathlich/multi-client:latest
+          tags: jnathlich/multi-client
 
       - name: Build and push Docker Server image
         uses: docker/build-push-action@v4
         with:
           context: ./server
           push: true
-          tags: jnathlich/multi-server:latest
+          tags: jnathlich/multi-server
+
+      - name: Build and push Docker Worker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./worker
+          push: true
+          tags: jnathlich/multi-worker
+
+      - name: Build and push Docker Nginx image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./nginx
+          push: true
+          tags: jnathlich/multi-nginx
